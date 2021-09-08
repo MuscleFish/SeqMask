@@ -4,6 +4,8 @@ It takes texts (str/list(str)) as the input, and returns the predictions of Tact
 
 This is the example program of how to use SeqMask to analyse TTPs.
 
+**Notice**: The model for FastText and Tactics_AR_Mask id too large that cannot be pushed on github. You may use BaiduCloud to download it: Link: https://pan.baidu.com/s/1AE3qvMP3GNJ3cvoCEjxz_A pwd: vfyg
+
 # Program Dir
 - **./FastTextModel**: It is where the words-embedding model for cyber-security saved.
 - **./models**: It is the place where the pre-trained SeqMask trained by ourselves kept.
