@@ -1,6 +1,6 @@
 from DataDeal import FastTextDeal
-from SeqMask import tact_ids,tech_ids
-from tensorflow.keras.models import load_model
+from SeqMask import tact_ids, tech_ids
+from tensorflow.keras.models import load_model, Model
 
 class TextDeal(object):
     def __init__(self, tact_model_path='./models/tactics_ar_mask_model',
@@ -38,3 +38,22 @@ class TextDeal(object):
                     results["total_techniques"][tid] = max(float(tech_predict[i, ti]),
                                                            results["total_techniques"][tid])
         return results
+
+class TextImportance(object):
+    def __init__(self, model_path='./models/techniques_mp_mask_model', weights_layer_name='mask_scores_0'):
+        self.text_deal = FastTextDeal()
+        out_model = load_model(model_path)
+        self.model = Model(out_model.input, out_model.get_layer(weights_layer_name).output)
+
+    def score_text(self, text='', max_len=128):
+        tokens = self.text_deal.getToken(text)
+        embedding_text = self.text_deal.getEmbedding(text, tokens, max_len)
+        scores = self.model.predict(embedding_text)
+        tokens_score = []
+        for i, t in enumerate(tokens):
+            tokens_score.append([])
+            for j, w in enumerate(t):
+                tokens_score[-1].append({'text': w, 'score': scores[i, j],
+                                         'percent': (scores[i, j]-scores[i, 0:len(t)].min()) /
+                                                    (scores[i, 0:len(t)].max()-scores[i, 0:len(t)].min())})
+        return tokens_score
