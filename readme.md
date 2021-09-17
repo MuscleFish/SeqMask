@@ -23,13 +23,13 @@ Follow the followed steps, you can learn how to use our model to classify even f
 - **text.py**: Test for SeqMask.
 
 # How to classify techniques and tactics
-User can follow the steps in `test.py` to test SeqMask
+Users can follow the steps in `test.py` to test SeqMask classifications
 ```python
 from TextClassify import TextDeal
 
 if __name__ == '__main__':
     test = TextDeal()
-    text_predict = test.classify_text("PLATINUM has renamed rar.exe to avoid detection.")
+    text_predict = test.classify_text("Input Your Text")
     print(text_predict["total_techniques"])
 ```
 Example Input:
@@ -42,7 +42,24 @@ Supposed Results:
 ```
 
 # How to get weakly-supervised important words
-By transforming the pre-trained models, you can use the text score layers to scoring the words in texts
+
+- **Why Weakly-Supervised?**
+
+Our Model does not need the word-level labeling like in NER. It takes classification datasets, 
+and makes the words scores only by the embedding vectors spatial distribution.
+That is to say, SeqMask considers the meaning of the words, and pick up the most likely space may be related with the tags.
+With a specific label, the model need to know which words related to it.
+
+For example, when giving a sentence tactic label 'TA0001', these relationships can be divided into 4 classes:
+
+words class | in text with label 'TA0001' | in texts without label 'TA0001' | note
+:-: | :-: | :-: | :-
+A | yes | no | Positive correlation 
+B | yes | yes | Not relevance  
+C | no | yes | Negative correlation 
+D | no | no | Unknown 
+
+By transforming the pre-trained models, you can use the text score layers to scoring the words in texts.
 
 ```python
 from tensorflow.keras.models import Model, load_model
