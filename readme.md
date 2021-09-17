@@ -59,6 +59,8 @@ B | yes | yes | Not relevance
 C | no | yes | Negative correlation 
 D | no | no | Unknown 
 
+However, the model is only need to get the class A, for A is the keywords of sentences with 'TA0001'.
+
 By transforming the pre-trained models, you can use the text score layers to scoring the words in texts.
 
 ```python
