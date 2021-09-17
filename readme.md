@@ -1,6 +1,6 @@
 # SeqMask
 SeqMask is a [Tensorflow2](https://tensorflow.google.cn/versions) Classification Model for TTPs (Tactics, Techniques, and Procedures) in Cyber Threat Intelligence (CTI).
-![model](imgs/multi-layer-model.png)
+<!-- ![model](imgs/multi-layer-model.png) -->
 It takes texts (str/list(str)) as the input, and returns the predictions of Tactics and Techniques sentence by sentence.
 
 This is the example program of how to use SeqMask to analyse TTPs.
