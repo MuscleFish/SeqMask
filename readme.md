@@ -12,6 +12,23 @@ Fig 1. SeqMask model
 This is the example program of how to use SeqMask to analyse TTPs. 
 Follow the followed steps, you can learn how to use our model to classify even find out the words scores of the inputs.
 
+# Paper Reference
+```
+@article{10.1093/comjnl/bxac172,
+    author = {Ge, Wenhan and Wang, Junfeng},
+    title = "{SeqMask: Behavior Extraction Over Cyber Threat Intelligence Via Multi-Instance Learning}",
+    journal = {The Computer Journal},
+    year = {2022},
+    month = {11},
+    abstract = "{Identification and extraction of Tactics, Techniques and Procedures (TTPs) for Cyber Threat Intelligence (CTI) restore the full picture of cyber attacks and guide the analysts to assess the system risk. Existing frameworks can hardly provide uniform and complete processing mechanisms for TTPs information extraction without adequate knowledge background. A multi-instance learning approach named SeqMask is proposed in this paper as a solution. SeqMask extracts behavior keywords from CTI evaluated by the semantic impact, and predicts TTPs labels by conditional probabilities. Still, the framework has two mechanisms to determine the validity of keywords. One using expert experience verification. The other verifies the distortion of the classification effect by blocking existing keywords. In the experiments, SeqMask reached 86.07\\% and 73.99\\% in F1 scores for TTPs classifications. For the top 20\\% of keywords, the expert approval rating is 92.20\\%, where the average repetition of keywords whose scores between 100\\% and 90\\% is 60.02\\%. Particularly, when the top 65\\% of the keywords were blocked, the F1 decreased to about 50\\%; when removing the top 50\\%, the F1 was under 31\\%. Further, we also validate the possibility of extracting TTPs from full-size CTI and malware whose F1 are improved by 2.16\\% and 0.81\\%.}",
+    issn = {0010-4620},
+    doi = {10.1093/comjnl/bxac172},
+    url = {https://doi.org/10.1093/comjnl/bxac172},
+    note = {bxac172},
+    eprint = {https://academic.oup.com/comjnl/advance-article-pdf/doi/10.1093/comjnl/bxac172/47411184/bxac172.pdf},
+}
+```
+
 # Program Dir
 - **./FastTextModel**: It is where the words-embedding model for cyber-security saved.
 - **./models**: It is the place where the pre-trained SeqMask trained by ourselves kept.
